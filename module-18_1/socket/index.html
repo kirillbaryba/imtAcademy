@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Socket.io!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <!-- <script>
+        var socket = io();
+        console.log('Hello client!');
+    </script> -->
+    <!-- <script>
+        var socket = io();
+        socket.on('message', function(data) {
+            document.write(data);
+        });
+        console.log('Hello client!');
+    </script> -->
+    <script>
+        var socket = io();
+        socket.on('myEvent', function(data) {
+            console.log(data);
+            document.write(data.description);
+        });
+        console.log('Hello client!');
+    </script>
+    <h1>Socket.io!</h1>
+</body>
+
+</html>
