@@ -21,13 +21,34 @@
         });
         console.log('Hello client!');
     </script> -->
-    <script>
+
+    <!-- 4.0 -->
+    <!-- <script>
         var socket = io();
         socket.on('myEvent', function(data) {
             console.log(data);
             document.write(data.description);
         });
         console.log('Hello client!');
+    </script> -->
+
+    <!-- 5.0 -->
+    <!-- <script>
+        var socket = io();
+        socket.emit('clientEvent', 'This event from client');
+    </script> -->
+
+    <!-- 6.0 -->
+    <!-- 
+        Для теста открыть в новых вкладках locallhost:3000
+     -->
+    <script>
+        var socket = io();
+        socket.on('broadcast', function(data) {
+            document.body.innerHTML = '';
+            document.write(data.description);
+
+        });
     </script>
     <h1>Socket.io!</h1>
 </body>

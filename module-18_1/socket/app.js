@@ -61,6 +61,58 @@
 //     console.log('Go to localHost:3000');
 // });
 
+//4.0
+// var app = require('express')();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+
+// app.get('/', function(req, res) {
+//     res.sendFile(__dirname + '/index.html');
+// });
+// //выполнится при соединении пользователя
+// io.on('connection', function(socket) {
+//     console.log('A user connected');
+
+//     //Отправка сообщения чере промежуток времени
+//     setTimeout(function() {
+//         //генерирует внутренее (встроенное) событие message
+//         socket.emit('myEvent', {
+//             description: 'User event from server'
+//         });
+//     }, 2000);
+
+//     //выполнится при отсоединения пользователя
+//     socket.on('disconnect', function() {
+//         console.log('A user disconnect');
+//     });
+// });
+
+// http.listen(3000, function() {
+//     console.log('Go to localHost:3000');
+// });
+
+// //5.0 Получение событий от клиента
+// var app = require('express')();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+
+// app.get('/', function(req, res) {
+//     res.sendFile(__dirname + '/index.html');
+// });
+// //выполнится при соединении пользователя
+// io.on('connection', function(socket) {
+
+//     //выполнится при отсоединения пользователя
+//     socket.on('clientevent', function(data) {
+//         console.log(data);
+//     });
+// });
+
+// http.listen(3000, function() {
+//     console.log('Go to localHost:3000');
+// });
+
+//6.0 Широковещание, отправка сообщений всем подключенным клиентам
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -68,21 +120,22 @@ var io = require('socket.io')(http);
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
-//выполнится при соединении пользователя
+
+var users = 0
+    //На каждое соединение 
 io.on('connection', function(socket) {
-    console.log('A user connected');
+    users++;
+    //Событие на колл. подключившихся users
+    socket.broadcast.emit('broadcast', {
+        description: users + 'user connected!'
+    });
 
-    //Отправка сообщения чере промежуток времени
-    setTimeout(function() {
-        //генерирует внутренее (встроенное) событие message
-        socket.emit('myEvent', {
-            description: 'User event from server'
-        });
-    }, 2000);
-
-    //выполнится при отсоединения пользователя
     socket.on('disconnect', function() {
-        console.log('A user disconnect');
+        users--;
+
+        socket.broadcast.emit('broadcast', {
+            description: users + 'user disconnect!'
+        });
     });
 });
 
