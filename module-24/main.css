@@ -1,0 +1,25 @@
+.card {
+    width: 120px;
+    height: 200px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    display: inline-block;
+    position: relative;
+}
+
+.card__btn {
+    position: absolute;
+    color: #ddd;
+    border: none;
+    background-color: tomato;
+    bottom: 0;
+    padding: 5px 15px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card__btn[disabled] {
+    background-color: #ddd;
+    color: #222;
+}
