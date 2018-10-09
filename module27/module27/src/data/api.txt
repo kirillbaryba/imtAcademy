@@ -1,0 +1,13 @@
+https://github.com/angular-university/angular-http-guide/blob/master/http-sample-app/src/app/app.component.ts
+https://developer.github.com/v3/users/
+
+https://www.telerik.com/videos/kendo-ui/kendo-ui-devchat-building-responsive-dashboards-with-angular-and-bootstrap-4
+https://www.telerik.com/kendo-ui#angular 
+
+
+example:
+
+http://prntscr.com/l44iez
+http://prntscr.com/l449g0
+http://prntscr.com/l44b50
+http://prntscr.com/l44j79
