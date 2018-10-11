@@ -1,0 +1,9 @@
+<mat-list role="list" *ngFor="let user of users">
+  <mat-list-item>
+    <a mat-list-item routerLink="/users/{{user.id}}">
+      <!-- <img matListAvatar src="{{user.username}}" alt="{{user.username}}"> -->
+      <p matLine>{{user.name}}</p>
+      <p matLine>{{user.username}}</p>
+    </a>
+  </mat-list-item>
+</mat-list>

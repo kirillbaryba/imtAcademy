@@ -1,0 +1,11 @@
+<mat-card *ngIf="post">
+  <mat-card-title>
+    {{ post.title }}
+  </mat-card-title>
+  <mat-card-content>
+    {{ post.body }}
+  </mat-card-content>
+  <mat-card-actions>
+    Author: <a mat-button routerLink="/users/{{post.userId}}"> {{ username }}</a>
+  </mat-card-actions>
+</mat-card>

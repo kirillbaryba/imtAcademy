@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { GithubService } from './github.service';
-// import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
