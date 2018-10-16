@@ -1,9 +1,13 @@
-<mat-list role="list" *ngFor="let user of users">
-  <mat-list-item>
-    <a mat-list-item routerLink="/users/{{user.id}}">
-      <!-- <img matListAvatar src="{{user.username}}" alt="{{user.username}}"> -->
-      <p matLine>{{user.name}}</p>
-      <p matLine>{{user.username}}</p>
-    </a>
-  </mat-list-item>
-</mat-list>
+<mat-card>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Favorite food" value="Sushi">
+  </mat-form-field>
+  <button mat-button>Add</button>
+</mat-card>
+
+<mat-nav-list role="list" *ngFor="let user of users">
+  <a mat-list-item routerLink="/users/{{user.id}}">
+    <!-- <img matListAvatar src="{{user.username}}" alt="{{user.username}}"> -->
+    <p matLine>{{user.name}}</p>
+  </a>
+</mat-nav-list>

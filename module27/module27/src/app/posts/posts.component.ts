@@ -14,7 +14,7 @@ export class PostsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private cardUserService: CardUserService) {}
 
   ngOnInit() {
-    this.route.subscribe(({ id }) =>
+    this.route.params.subscribe(({ id }) =>
       this.cardUserService.getUser(id).subscribe((post: Post) => {
         this.post = post;
         this.cardUserService.getUser(post.userId).subscribe((user: any) => (this.username = user.name));
