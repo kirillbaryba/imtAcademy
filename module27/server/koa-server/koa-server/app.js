@@ -108,7 +108,7 @@ const postsController = {
     const authorId = ctx.query && ctx.query.authorId;
     let postsList = posts;
     if (authorId) {
-      postsList = posts.filter(post => post.authorId.indexOf(authorId) !== -1);
+      postsList = posts.filter(post => post.authorId == authorId);
     }
     if (title) {
       postsList = posts.filter(post => post.title.indexOf(title) !== -1);
@@ -147,9 +147,7 @@ const commentsController = {
     const postId = ctx.query && ctx.query.postId;
     let commentsList = comments;
     if (postId) {
-      commentsList = comments.filter(
-        comment => comment.postId.indexOf(postId) !== -1
-      );
+      commentsList = comments.filter(comment => comment.postId == postId);
     }
     if (userId) {
       commentsList = comments.filter(

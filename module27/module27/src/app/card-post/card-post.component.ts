@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { GithubService } from '../github.service';
 import { CardUserService } from '../card-user/card-user.service';
 import { Post } from './Post';
 
@@ -12,14 +13,20 @@ import { Post } from './Post';
 export class CardPostComponent implements OnInit {
   post: Post;
   username: string;
+  comments: any;
 
-  constructor(private route: ActivatedRoute, private cardUserService: CardUserService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private cardUserService: CardUserService,
+    private githubService: GithubService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(({ id }) =>
       this.cardUserService.getPost(id).subscribe((post: Post) => {
         this.post = post;
-        this.cardUserService.getUser(post.userId).subscribe((user: any) => (this.username = user.name));
+        this.cardUserService.getUser(post.authorId).subscribe((user: any) => (this.username = user.name));
+        this.githubService.getPostsForUser(post.id).subscribe(comments => (this.comments = comments));
       })
     );
   }
